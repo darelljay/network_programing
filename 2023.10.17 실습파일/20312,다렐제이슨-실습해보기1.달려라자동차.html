@@ -22,9 +22,6 @@
     .stop{
       background-color: red !important;
     }
-    img{
-      transition: all 1s;
-    }
   </style>
 </head>
 
@@ -56,49 +53,49 @@
     let goCar;
 
 
-    const move_car = (el,index) =>{
+    const move_car = () =>{
         span[0].textContent = xPos;
         cars[0].setAttribute("style",`transform: translateX(${xPos}px);`);
         xPos+=1
     }
-
+    
     btns[0].addEventListener("click",(e)=>{
       change_btn_color(e.target);
+
       if(isMoving){
-        cars[0].setAttribute("style",`transform: translate(0);`)
         clearInterval(goCar)
         isMoving = false
       }else{
-        goCar = setInterval(move_car,1.5);
+        goCar = setInterval(() => move_car(cars[0]), 10);
         isMoving = true
       }
-    })
+    });
 
-    // btns.forEach((Element,index)=>{
-    //   Element.addEventListener("click",()=>{
-    //     goCar = setInterval(move_car(cars[index],index),1.5);
-    //     change_btn_color(Element);
+    let isMoving2;
+    let goCar2;
+    let xPos2= 0;
 
-       
-        
 
-    //   })
-    // })
-
-    // const render = () =>{
-    //   span[0].textContent = xPos
-    //   cars[0].style.transform(`translateX(${xPos}px)`)
-    //   xPos+=1
-    // }
-
-    // btns[1].addEventListener("click",()=>{
-    //   if(isMoving){
-
-    //   }else{
-    //     goCar = setInterval(render,1.5);
-    //   }
-    // })
-
+    const move_car2 = () =>{
+      span[1].textContent = xPos2;
+      cars[1].setAttribute("style",`transform: translateX(${xPos2}px);`);
+      xPos2+=1;
+      goCar2 = requestAnimationFrame(move_car2);
+      // console.log(xPos2)
+    }
+    
+    
+    btns[1].addEventListener("click",(e)=>{
+      change_btn_color(e.target);
+      
+      if(isMoving2){
+        cancelAnimationFrame(goCar2)
+        isMoving2 = false;
+      }else{
+        move_car2();
+        isMoving2 = true;
+      }
+    });
   </script>
 </body>
 
