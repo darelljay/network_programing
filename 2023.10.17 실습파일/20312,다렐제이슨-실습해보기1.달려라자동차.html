@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습해보기1.Car Animation</title>
+  <style>
+    #car,#car2{
+      width: 300px;
+      /* height: 300px; */
+    }
+    input[type=button]{
+      width: 100px;
+      height: 30px;
+      background-color: skyblue;
+      color: white;
+      border-color: skyblue;
+      border-radius: 30px;
+    }
+    .stop{
+      background-color: red !important;
+    }
+    img{
+      transition: all 1s;
+    }
+  </style>
+</head>
+
+<body>
+  <p id="title1">setInterval Animation</p>
+  <img id="car" src="./img/car.png" alt="car" />
+  <div>
+    x-position:<span id="value">0</span>
+  </div>
+  <input type="button" id="btn1" value="START!">
+  <p id="title2">requestAnimationFrame Animation</p>
+  <img id="car2" src="./img//car2.png" alt="car" />
+  <div>
+    x-position:<span id="value2">0</span>
+  </div>
+  <input type="button" id="btn2" value="START!">
+  <script>
+    const btns = document.querySelectorAll("input");
+    const cars = document.querySelectorAll("img");
+    const span = document.querySelectorAll("span");
+    let isMoving
+    let xPos = 0;
+
+
+    const change_btn_color = (el) =>{
+      el.classList.toggle("stop");
+      el.className === "stop" ? el.value = "Stop!":el.value = "Start!"
+    }
+    let goCar;
+
+
+    const move_car = (el,index) =>{
+        span[0].textContent = xPos;
+        cars[0].setAttribute("style",`transform: translateX(${xPos}px);`);
+        xPos+=1
+    }
+
+    btns[0].addEventListener("click",(e)=>{
+      change_btn_color(e.target);
+      if(isMoving){
+        cars[0].setAttribute("style",`transform: translate(0);`)
+        clearInterval(goCar)
+        isMoving = false
+      }else{
+        goCar = setInterval(move_car,1.5);
+        isMoving = true
+      }
+    })
+
+    // btns.forEach((Element,index)=>{
+    //   Element.addEventListener("click",()=>{
+    //     goCar = setInterval(move_car(cars[index],index),1.5);
+    //     change_btn_color(Element);
+
+       
+        
+
+    //   })
+    // })
+
+    // const render = () =>{
+    //   span[0].textContent = xPos
+    //   cars[0].style.transform(`translateX(${xPos}px)`)
+    //   xPos+=1
+    // }
+
+    // btns[1].addEventListener("click",()=>{
+    //   if(isMoving){
+
+    //   }else{
+    //     goCar = setInterval(render,1.5);
+    //   }
+    // })
+
+  </script>
+</body>
+
+</html>

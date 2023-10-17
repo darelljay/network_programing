@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>실습해보기2</title>
+  <style>
+    #container {
+      background: red;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+	<button type="button" class="open">창 열기</button>
+  <div id="container">
+    <button type="button">닫기</button>
+  </div>
+  <script>
+    const btn = document.querySelectorAll('button');
+    const cont = document.getElementById("container");
+
+    for(let i=0; i<btn.length; i++){
+      btn[i].addEventListener("click",()=>{
+        if(i === 0){
+          cont.style.display = 'flex';
+        }else{
+          cont.style.display = 'none' 
+        }
+      })
+    }
+	</script>
+</body>
+
+</html>

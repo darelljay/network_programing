@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>2.자바스크립트 DOM연습</title>
+</head>
+<body>
+    <h1 id="first">HTML 요소(element)를 찾는방법</h1>
+    <ul id="container_1" class = "container1">
+        <li id="li1">HTML</li>
+        <li class="li2">CSS</li>
+        <li id="li3">JavaScript</li>
+    </ul>
+    <ol id="container_2" class = "container2">
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+    </ol>
+
+    <script type="text/javascript">
+
+    // getElementById() 사용
+    // id 'first'를 찾아서 h1 태그의 제목의 색상을 red로 변경
+    const first = document.getElementById("first")
+    first.style.color = "red"
+    // getElementsByTagName() 사용
+    // 전체 li 태그를 찾아서 배경색을 모두 lightgreen으로 변경
+    const list = document.getElementsByTagName("li")
+    for(let i of list){
+        i.style.backgroundColor = "lightgreen"
+    }
+    // getElementsByClassName() 사용
+    // class 'li2'을 찾아서 배경색을 gray로 변경
+     document.getElementsByClassName("li2")[0].style.backgroundColor = "gray"
+    
+
+    // querySelector() 사용
+    // CSS 선택자로 li3를 찾아서 gray로 배경색 변경
+    document.querySelector("#li3").style.backgroundColor = "gray"
+    // querySelectorAll() 사용
+    // CSS 선택자로 전체 li 태그를 찾아서 배경색을 모두 gray로 변경
+    const li_list = document.querySelectorAll("li");
+
+    // for(let i of li_list){
+    //     i.style.backgroundColor = "gray"
+    // }
+
+    console.log(li_list);
+
+    li_list.forEach(element => {
+        element.style.backgroundColor = "gray"
+    });
+
+                   
+    </script>
+</body>
+</html>

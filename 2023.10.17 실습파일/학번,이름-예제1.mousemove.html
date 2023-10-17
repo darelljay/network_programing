@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mousemove 마우스 좌표</title>
+    <style>
+      .container{
+        width: 800px;
+        display: flex;
+      }
+      #my_div{
+        background: green;
+        width: 200px;
+        /* height: 100vh; */
+        height: 200px;
+      }
+
+      input{
+        width: 200px;
+        height: 40px;
+        margin-top: 10px;
+      }
+
+      #result{
+        width: 250px;
+        border: 1px solid #ccc;
+        margin-left: 10px;
+        padding: 15px 20px;
+        font-size: 20px;
+        line-height: 40px;
+      }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id='my_div'></div> 
+        <div id='result'></div>
+    </div>
+    
+    <input id='clearbtn' type='button' value='clear' />
+
+    <script>
+      // 마우스 포인터
+      // 1. ScreenX,Y : 현재 모니터 기준 위치
+      // 2. pageX,Y: 전체 문서 기준(스크롤 포함), 스크롤시 마다 값 변화
+      // 3. cleintX,Y : 현재 문서 기준(스크롤 제외), 스크롤시 값 변화 x 
+      // 4. offsetX,Y : 현재 오브젝트 기준 
+
+      const my_div = document.querySelector("#my_div");
+      const result = document.querySelector("#result");
+      const clearBtn = document.querySelector("input");
+
+     
+      my_div.addEventListener("click",(e)=>{
+        
+        result.innerHTML = `<div>scrennX, Y: (${e.screenX},${e.screenY})</div>`;
+        result.innerHTML += `<div>clientX, Y: (${e.clientX},${e.clientY})</div>`;
+        result.innerHTML += `<div>pageX, Y: (${e.pageX},${e.pageX})</div>`;
+        result.innerHTML += `<div>offsetX, Y: (${e.offsetX},${e.offsetY})</div>`;
+
+      })
+
+      clearBtn.addEventListener("click",()=>{
+        result.innerHTML = "";        
+      })
+    </script>
+</body>
+
+</html>

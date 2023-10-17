@@ -1,0 +1,44 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>ex03-innerText & textContent</title>
+</head>
+
+<body>
+  <p>입력창에 HTML 태그를 입력해보세요!</p>
+  <input type="text" id="txt" size="50" name="text">
+
+  <input type="button" value="innerHTML 출력">
+  <input type="button" value="innerText 출력">
+  <input type="button" value="textContent 출력">
+  <input type="button" value="clear all">
+  <br><br>
+  <div id="view1"></div>
+  
+</body>
+
+<script>
+  const btn = document.getElementsByTagName('input');
+  const v1 = document.querySelector("#view1")
+  for(let i=1; i<btn.length; i++){
+    btn[i].addEventListener("click",()=>{
+      if(btn[0].value===''){
+        alert('빈 값입니다')
+        console.log(btn[0].value);
+      }
+      if(btn[i].value === "innerHTML 출력"){
+        v1.innerHTML += btn[0].value;
+      }else if(btn[i].value === "innerText 출력"){
+        v1.innerText += btn[0].value;
+      }else if(btn[i].value === "textContent"){
+        v1.textContent += btn[0].value;
+      }else{
+        v1.innerHTML = ''
+      }
+
+    })
+  }
+</script>
+
+</html>

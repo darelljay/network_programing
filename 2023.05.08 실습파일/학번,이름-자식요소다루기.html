@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습해보기6</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      list-style: none
+    }
+
+    h1 {
+      text-align: center;
+      margin: 30px 30px;
+    }
+    .title{
+      font-size: larger;
+      width: 100%;
+    }
+    .titleBox{
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      flex-wrap: wrap;
+      height: 10vh;
+    }
+    .container{
+      width: 100vw;
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+    }
+    input{
+      width: 10em;
+      height: 100%;
+      border-radius: 9px;
+      background-color: gold;
+    }
+    input:hover{
+      cursor: pointer;
+    }
+    .reset{
+      background-color: red;
+      color: #fff;
+    }
+
+    ul{
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      width: 50%;
+      height: 20%;
+    }
+    ul>li{
+      border-radius: 13px;
+      margin-top: 10px;
+      background-color: #f4f0f0;
+      text-align: center;
+      font-size: 5rem;
+      transition: 0.5s;
+    }
+    .childrenColor{
+      background-color: coral;
+    }
+    .chlidNodeColor{
+      background-color: aqua;
+    }
+    .original{
+      background-color: #f4f0f0;
+    }
+   
+  </style>
+</head>
+
+<body>
+  <h1>자식 노드 다루기</h1>
+  <div class="titleBox">
+    <p class="title">Balls</p>
+    <div class="btnWrap">
+      <input class="childrenBtn" type="button" value="children 버튼">
+      <input class="childNodesBtn" type="button" value="childNodes 버튼">
+      <input class="reset" type="button" value="RESET">
+    </div>
+  </div>
+  <div class="container">
+    <ul class="balls">
+      <li>⚽</li>
+      <li>🥎</li>
+      <li>🏀</li>
+      <li>🏐</li>
+      <li>🎱</li>
+      <li>🎳</li>
+    </ul>
+  </div>
+  <script>
+   const sports_balls = document.querySelector(".balls");
+   const btn = document.querySelectorAll("input");
+
+   const childrenColor = () =>{
+
+    for(let item of sports_balls.children){
+          item.className = "childrenColor";
+        }
+   }
+
+   const chlidNodeColor = () =>{
+     for(let i=0; i<sports_balls.childNodes.length; i++){
+       const j = sports_balls.childNodes[i];
+       
+
+      // if(j.nodeType === Node.ELEMENT_NODE){
+      //   j.className = "chlidNodeColor";
+      // }
+
+      if(j.nodeName.toLowerCase() === "li"){
+        j.className = "chlidNodeColor";
+      }
+    }
+    
+    // for(let item of sports_balls.childNodes){
+    //   console.log(item.ELEMENT_NODE);
+    //   item.className = "chlidNodeColor"
+    // }
+   }
+
+   const original = () =>{
+    for(let item of sports_balls.children){
+      item.className = "original"
+    }
+   }
+  btn.forEach(element =>{
+    element.addEventListener("click",()=>{
+      if(element.className === "childrenBtn"){
+       childrenColor();
+      }else if(element.className === "childNodesBtn"){
+        chlidNodeColor();
+      }else{
+       original();
+      }
+    });
+  });
+
+  </script>
+</body>
+
+</html>

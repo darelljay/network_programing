@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습해보기1</title>
+  <style>
+    p {
+      font-size: 30px;
+    }
+    
+  </style>
+</head>
+
+<body>
+  <h3>innerHTML 활용 : 아래 글자를 클릭하면
+    동그리가 보입니다.</h3>
+  <hr>
+  <p id="firstP" style="color:blue; cursor: pointer;">
+    여기를 <span style="color:red">클릭하세요</span>
+  </p>
+  <script>
+    const text = document.querySelector("#firstP")
+
+    text.addEventListener("click",()=>{
+      text.innerHTML = '귀여운 <img src="동그리1.png"/> 동그리'
+
+
+      
+    })
+  </script>
+</body>
+
+</html>

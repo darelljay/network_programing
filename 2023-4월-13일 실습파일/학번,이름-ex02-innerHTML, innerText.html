@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ex02-innerHTML & innerText</title>
+</head>
+
+<body>
+  <h1>What Can JavaScript Do?</h1>
+  <hr>
+  <p id="text">JavaScript can change HTML content.</p>
+  <input type="button" value="Click innerHTML" id="Ihtml">
+  <input type="button" value="Click innerText" id="Itext">
+  <script>
+    const text = document.querySelector('#text');
+    const btn  = document.getElementsByTagName("input");
+
+    for(let i=0; i<btn.length; i++){
+      btn[i].addEventListener("click",()=>{
+        text.textContent = btn[i].value
+        console.log(btn[i].value);
+      })
+    }
+    btn[0].addEventListener("click",()=>{
+      text.innerHTML = '<h2>hello javascript</h2>'
+    })
+    
+    btn[1].addEventListener("click",()=>{
+      text.innerText = '<h2>hello javascript</h2>'
+    })
+
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>ex01-CSS3 스타일 동적 변경</title>
+</head>
+<style>
+  .sampleText{
+    /* 크기: 600px, 외곽선: 2px, 폰트크기: 20px, 가운데 정렬, 안쪽여백: 20px */
+    font-size: 20px;
+    border: 2px solid;
+    width: 600px;
+    margin: 20px;
+    text-align: center;
+    margin-top: 10px;
+    margin: 0 auto;
+    transition: 0.5s ease-in-out;
+  ;
+  }
+
+  .wrap{
+    /* 페이지 가운데 정렬 */
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  
+  }
+
+</style>
+
+<body>
+  <h3>CSS 스타일 동적 변경</h3>
+  <hr>
+  <p class="sampleText">This is sample text</p>
+  <div class="wrap">
+    <span>색상 선택:</span>
+    <select name="color" id="colorSelect">
+      <option value="red">빨강</option>
+      <option value="green">초록</option>
+      <option value="blue">파랑</option>
+      <option value="orange">주황</option>
+      <option value="yellow">노랑</option>
+    </select>
+
+    <span>폰트크기 선택:</span>
+    <select name="fontSize" id="fontSelect">
+      <option value="10px">10px</option>
+      <option value="20px">20px</option>
+      <option value="30px">30px</option>
+      <option value="40px">40px</option>
+      <option value="50px">50px</option>
+    </select>
+    <input type="button" value="선택 완료" onclick="change()">
+    <input type="button" value="초기화" onclick="reset()">
+  </div>
+  <script>
+  const change = ()=>{
+    let select_value = document.querySelector("#colorSelect");
+    let fontBox = document.querySelector("#fontSelect");
+    let text = document.querySelector(".sampleText");
+    // console.log( select_value.options[select_value.selectedIndex].value)
+    // select_value.options[select_value.selectedIndex].text;  
+    
+    text.style.color =  select_value.options[select_value.selectedIndex].value
+    text.style.fontSize = fontBox.options[fontBox.selectedIndex].value
+  }
+
+  const reset = ()=>{
+    let text = document.querySelector(".sampleText");
+
+    text.style.color = 'black'
+    text.style.fontSize = '20px'
+  }
+  </script>
+</body>
+
+</html>

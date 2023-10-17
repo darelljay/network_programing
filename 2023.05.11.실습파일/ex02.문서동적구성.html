@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex02.문서의 동적구성</title>
+    <style>
+        ul{
+            font-size: 25px;
+            list-style: lower-roman;
+        }
+    </style>
+</head>
+<body>
+    <h1>문서의 동적 구성</h1>
+    <h3>아래 똑같은 태그를 자바스크립트로 아래에 생성해보세요.</h3>
+    <div class="contents">
+      <h4>This is sample text</h4>
+    </div>
+
+    <ul class="sports_list">
+      <!-- soccer -->
+        <li class="sports">swim</li>
+        <li class="sports">bowling</li>
+        <!-- tennis -->
+    </ul>
+    <script>
+        //<h4>This is sample text</h4>를 자바스크립트로 생성 후 contents의 마지막 자식으로 삽입
+  
+        // <p>이전 노드 삽입<p> 생성 후 클래스명이 contents인 div태그의 첫번째 자식으로 삽입하기
+
+        // <p>이전 노드 삽입2<p>를 두번째 This is sample text 태그 앞에 추가 하기
+      
+        
+        // Q1. <li>tennis<li>를 클래스명이 sports_list ul태그의 마지막 자식으로 삽입
+
+        // Q2. <li>soccer<li>를 클래스명이 sports_list ul태그의 첫번째 자식으로 삽입
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Node 관계 다루기</title>
+  <style>
+    button {
+      margin: 5px;
+    }
+    
+  </style>
+</head>
+
+<body>
+  <h1>각 버튼을 클릭해보세요</h1>
+  <p id="first_title">container</p>
+
+  <div id="container" style="border: 5px solid black; height: 100px;">
+    <button class="btn"> 1번 </button>
+    <button class="btn"> 2번 </button>
+    <button class="btn"> 3번 </button>
+    <!-- <button class="btn"> 4번 </button> -->
+  </div>
+  <p id="second_title">targetContainer</p>
+
+  <div id="targetContainer" style="border: 1px solid black; height: 100px;"></div>
+  <script type="text/javascript">
+    const p = document.querySelectorAll("p");
+    const btn = document.querySelectorAll(".btn");
+    const div = document.querySelectorAll("div");
+
+    const moveElement = () => {
+
+    }
+    const p1 = document.createElement("p");
+    p1.append("모든 요소 이동완료");
+
+    btn.forEach(element => {
+      element.addEventListener("click", () => {
+        // if(div[0].children.length!=0){
+        //   div[1].appendChild(element);
+        if (element.parentElement.id === "container") {
+          div[1].append(element);
+
+          if (div[0].children.length === 0) {
+            p[1].appendChild(p1);
+          } 
+        } else {
+          div[0].append(element);
+
+          if (div[1].children.length === 0) {
+            p[0].appendChild(p1);
+          } 
+         
+
+        }
+      })
+
+    })
+
+
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습해보기3.setInterval() 함수</title>
+
+    <style type="text/css">
+        .toggle {
+            width: 200px;
+            height: 200px;
+            background: red;
+            text-align: center;
+            line-height: 200px;
+            font-size: 70px;
+        }
+
+        div {
+            width: 200px;
+            height: 200px;
+            background: yellow;
+            text-align: center;
+            line-height: 200px;
+            font-size: 70px;
+        }
+    </style>
+</head>
+
+<body>
+    <p>
+        <input type="button" value="start" />
+        <input type="button" value="stop" />
+    </p>
+    <div class="toggle" id="toggle">
+        짠!
+    </div>
+
+    <script type="text/javascript">
+        const btns = document.querySelectorAll("input");
+        const togle_box = document.querySelector(".toggle");
+
+        const toggle_the_box = () => {
+            togle_box.classList.toggle("toggle");
+        }
+
+        let change_color;
+        let is_running = true;
+
+        change_color = setInterval(toggle_the_box, 1000);
+
+        const make_interval_run = () => {
+            if (!is_running) {
+                change_color = setInterval(toggle_the_box, 1000);
+                is_running = true;
+            } else {
+                clearInterval(change_color);
+                is_running = false;
+            }
+        }
+        
+        btns.forEach(element => {
+            element.addEventListener("click", () => {
+                if (element.value === "start") {
+                    if (is_running === true) return alert('이미 실행중입니다.')
+                   make_interval_run()
+                } else {
+                    if (is_running === false) return alert('실행을 하셔야죠')
+                    clearInterval(change_color);
+                    make_interval_run
+                }
+            })
+
+        })
+
+    </script>
+</body>
+
+</html>

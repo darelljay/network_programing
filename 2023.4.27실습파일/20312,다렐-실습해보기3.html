@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습해보기3</title>
+  <style>
+    body {
+      background-color: aliceblue;
+    }
+
+    .active {
+      background-color: aqua;
+      font-size: 20px;
+    }
+
+    .reactive{
+            color: hotpink;
+            font-size: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 class="title">ClassList 연습</h1>
+  <div class="container">
+    <ul id="tutorial">
+      <li class="html">HTML</li>
+      <li class="css">CSS</li>
+      <li class="css3">CSS3</li>
+      <li class="javascript">JavaScript</li>
+      <li class="jquery">jQuery</li>
+    </ul>
+  </div>
+  <input type="button" value="add">
+  <input type="button" value="toggle">
+  <input type="button" value="replace">
+  <input type="button" value="contains">
+  <input type="button" value="remove">
+  <script>    
+
+      // 1. add버튼 클릭 시 첫 번째 li태그에 active 클래스 추가
+    const btns = document.querySelectorAll("input");
+    const lists = document.querySelector("ul").children;
+
+     // forEach로 
+    
+    btns.forEach((element,index) => {
+      element.addEventListener('click',()=>{
+        console.log(index);
+        switch(index){
+          case 0:
+            lists[0].classList.add('active');
+            break;
+          case 1:
+            lists[0].classList.toggle('active');
+            break;
+          case 2: 
+            lists[0].classList.replace('active','reactive');
+            break;
+          case 3:
+          lists[0].classList.contains("active") || lists[0].classList.contains("reactive")   ? alert(`${lists[0].className}있음`):alert(`클래스 없음`)  
+          break;
+          case 4:
+          lists[0].className === ""  ? alert('현재 클래스가 없으므로 삭제 수행되지않음'):lists[0].className=''
+          break;
+        }
+      })
+    });
+
+      // 2. toggle버튼 클릭 시 첫 번째 li태그에 active클래스가 없으면 추가, 있으면 제거
+
+      // 3. replace버튼 클릭 시 active 클래스가 있다면, reactive클래스로 교체, 없으면 'active클래스 없음' 경고창 출력
+
+      // 4. contains버튼 클릭 시 '현재 클래스: 클래스명' 출력, 없으면 '추가된 클래스 없음' 경고창 출력
+
+      // 5. remove버튼 클릭 시 active, reactive 클래스 삭제, 단 현재 클래스가 없다면
+            //    '현재 클래스가 없으므로 삭제 수행되지않음' 경고창 출력
+
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

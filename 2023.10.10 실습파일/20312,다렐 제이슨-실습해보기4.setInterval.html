@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <title>실습해보기4.setInterval</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <style>
+    html {
+      height: 100%;
+    }
+    body{
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .rocket{
+      position: absolute;
+      bottom: 0;
+      width: 100px;
+      height: 150px;
+    }
+    .text{
+      font-size: 5rem;
+      font-weight: 100;
+      text-align: center;
+    }
+    .blackhole{
+      position: absolute;
+      top: 0;
+      width: 50%;
+      transform: scaleY(-1);
+      transition: 3s;
+    }
+   
+  </style>
+</head>
+
+<body>
+  <img class="blackhole" src="./img/blackhole.png" alt="">
+  <img class="rocket" src="./img/rocket.png" alt="로켓">
+  <div class="text">yPos</div>
+  <script>
+    let yPos=0;
+    const text=document.querySelector(".text")
+    const rocket=document.querySelector(".rocket")
+
+    const render=()=>{
+      text.textContent=yPos
+      rocket.style.transform=`translateY(${-yPos}px)`
+      yPos+=2
+      if(yPos>500){
+        clearInterval(go)
+        text.textContent=`stop`;
+        
+      } 
+    }
+    const go=setInterval(render,1.5)
+
+    window.addEventListener("click",()=>{
+      clearInterval(go)
+      text.textContent=`stop`;
+    })
+
+
+  </script>
+</body>
+
+</html>

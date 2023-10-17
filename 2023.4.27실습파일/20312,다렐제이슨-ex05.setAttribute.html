@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ex05.Attribute  연습</title>
+  <style>
+    body {
+      background-color: aliceblue;
+    }
+
+    .active {
+      background-color: blue;
+      font-size: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 id="write" class="title">Attribute 연습</h1>
+  <div class="container">
+    <ul id="tutorial">
+      <li class="html">HTML</li>
+      <li class="css">CSS</li>
+      <li class="css3">CSS3</li>
+      <li class="javascript">JavaScript</li>
+      <li class="jquery">jQuery</li>
+    </ul>
+  </div>
+  <input type="button" value="add" onclick="add()">
+  <input type="button" value="add2" onclick="add2()">
+  <input type="button" value="contains_second li" onclick="contains1()">
+  <input type="button" value="remove_second Style" onclick="remove1()">
+  <script>
+    const lists = document.querySelector("ul").children;
+    const btns = document.querySelectorAll("input");
+
+    const add = ()=>{
+      lists[0].setAttribute("style"," background-color: aqua; font-size: 20px;");
+    }
+
+    const add2 = ()=>{
+      lists[1].classList.add("active");
+    }
+
+    const contains1 = ()=>{
+      console.log( lists[1].hasAttribute("class"));
+      lists[1].hasAttribute("class") ? alert(`${lists[1].getAttribute("class")}있음`) :   alert(`클래스 없음`)
+      
+    }
+
+    const remove1 = ()=>{
+      lists[1].removeAttribute("class")
+    }
+    // btns.forEach((element,index) => {
+    //   element.addEventListener('click',()=>{
+    //     switch(index){
+    //       case 0:
+    //         lists[index].setAttribute("style"," background-color: aqua; font-size: 20px;");
+    //         break;
+    //       case 1:
+    //         lists[index].classList.add('active');
+    //         break;
+    //       case 2:
+           
+    //         lists[index].className == ' ' ? alert(`클래스 없음`) :   alert(`${lists[index].className}있음`)
+    //     }
+    //   })
+    // });
+    // 1. add() : 첫번째 li 태그의 배경색을 aqua, 폰트 크기를 20px로 지정
+
+    // 2. add2(): 두번째 li 태그에 active클래스 추가(classList사용)
+
+    // 3. contains(): 두번째 li 태그의 현재 클래스명이 있다면 "클래스명 있음" 경고창 출력, 없으면 "클래스 없음" 출력
+    
+    // 4. remove(): 두번째 li 태그의 class 속성을 삭제
+  </script>
+</body>
+</html>

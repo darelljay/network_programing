@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>싨ㅂ해보기5 배경색 바꾸기</title>
+</head>
+<body>
+    <input type="button" value="배경색 바꾸기" class="btn">
+</body>
+<script>
+    const color = ["white","yellow","aqua","purple"];
+    const btn = document.querySelector(".btn");
+    let idx = 0;
+    btn.addEventListener("click",()=>{
+        // for(let colors of color){
+        //     document.body.setAttribute("style",`background:${colors};`);
+        // }
+
+        // if(idx === 0){
+        //     document.body.setAttribute("style",`background:${color[idx]}; `);
+        //     idx++
+        // }else if(idx === 1){
+        //     document.body.setAttribute("style",`background:${color[idx]}; `);
+        //     idx++
+        // }else if(idx === 2){
+        //     document.body.setAttribute("style",`background:${color[idx]}; `);
+        //     idx++
+        // }else if(idx === 3){
+        //     document.body.setAttribute("style",`background:${color[idx]}; `);
+        //     idx = 0;
+        // }
+        
+    //    idx++;
+    //    idx >= color.length ? idx=0:"";
+    //    document.body.setAttribute("style",`background:${color[idx]} `);
+        
+        idx++;
+        document.body.setAttribute("style",`background:${color[idx%color.length]} `);
+
+    });
+    
+</script>
+</html>
