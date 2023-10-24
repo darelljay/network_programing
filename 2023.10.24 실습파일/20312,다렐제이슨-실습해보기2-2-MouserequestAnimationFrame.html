@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>requsetAnimationFrame - 마우스 제어하기2</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <style>
+   *{
+    margin: 0;
+    padding: 0;
+   }
+   body{
+    background-color: black;
+   }
+
+   h1{
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    color: #fff;
+    font-size: 1.5em;
+   }
+   .cursor_item{
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      top: 0;
+      left: 0;
+      transform: translate(0, 0);
+    }
+
+  </style>
+</head>
+
+<body>
+  <h1>test</h1>
+  <div class="cursor_item"></div>
+  <script>
+    const box = document.querySelector(".cursor_item");
+    const h1 = document.querySelector("h1");
+    let x = 0;
+    let y =0;
+    let speed = 0.03
+    let mouseX = 0;
+    let mouseY = 0;
+
+    const loop= () =>{
+      mouseX += (x-mouseX)*speed;
+      mouseY += (y-mouseY) * speed;
+      h1.innerHTML = `X: ${x} mouseX: ${mouseX}`
+      box.setAttribute("style",`transform: translate(${mouseX}px, ${mouseY}px);`)
+      window.requestAnimationFrame(loop)
+    }
+   const mouseFunc = (e)=>{
+      x = e.clientX;
+      y = e.clientY
+    }
+
+    window.addEventListener("mousemove",mouseFunc);
+    loop()
+  </script>
+</body>
+
+</html>
