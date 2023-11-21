@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>실습해보기1.topAndBottom</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      font-size: 2rem;
+      color: #fff;
+    }
+
+    div:nth-of-type(1){
+      background-color: teal;
+    }
+
+    div:nth-of-type(2){
+      background-color: salmon;
+    }
+
+    div:nth-of-type(3){
+      background-color: royalblue;
+    }
+
+    button {
+      position: fixed;
+      width: 80px;
+      height: 40px;
+    }
+
+    #top {
+      top: 10px;
+      left: 20px;
+    }
+
+    #bottom {
+      top: 60px;
+      left: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <button id="top" type="button">top</button>
+  <button id="bottom" type="button">bottom</button>
+  <div>content 1</div>
+  <div>content 2</div>
+  <div>content 3</div>
+
+  <script>
+    const functional_buttons = document.querySelectorAll("button");
+
+    functional_buttons.forEach(element => {
+      element.addEventListener("click",(e)=>{
+        if (e.target.id == "top") {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        } else {
+          window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: 'smooth' 
+          });
+        }
+      })
+      })
+
+  </script>
+</body>
+
+</html>

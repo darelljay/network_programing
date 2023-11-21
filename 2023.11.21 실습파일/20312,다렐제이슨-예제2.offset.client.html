@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    ex02.offsetHeight and clientHeight
+  </title>
+
+  <style>
+    body{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .container{
+      text-align: center;
+    }
+
+    h1 {
+      color: green;
+    }
+
+    #box {
+      height: 300px;
+      width: 400px;
+      padding: 20px;
+      margin: 20px;
+      border: 20px solid black;
+      overflow-x: scroll;
+      overflow-y: scroll;
+      text-align: center;
+      font-size: 20px;
+    }
+    
+    #box.active{
+      transform: scale(0.5);
+    }
+
+    #result {
+      font-size: 20px;
+      font-weight: bold;
+      color: green;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 15px;
+      font-weight: bolder;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>OffsetHeight and ClientHeight</h1>
+
+    <h2>차이점 살펴보기</h2>
+
+    <button id="btn1">
+      Click Here!
+    </button>
+
+    <button id="btn2">
+      Transform
+    </button>
+
+    <div id="box">
+      <h2>요소의 크기</h2>
+      height: 300px</br>
+      width: 400px</br>
+      padding: 20px</br>
+      margin: 20px</br>
+      border: 20px</br></br>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Labore unde debitis, soluta at, vitae molestiae possimus
+      id vero impedit ad dolores officiis quis tempora?
+      Nisi hic a harum pariatur vel.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Labore unde debitis, soluta at, vitae molestiae possimus
+      id vero impedit ad dolores officiis quis tempora?
+      Nisi hic a harum pariatur vel.
+    </div>
+
+    <p id="result">
+
+
+    </p>
+
+  </div>
+
+    <script>
+     // offset 속성
+     // offsetHeight =  content + padding + border + scrollbar
+
+    //  Naming Convention(네이밍 컨밴션)
+    // 1. snake_case(스네이크 케이스)
+    // 2. camelCase(카멜케이스)
+    // 3. PascalCase(파스칼케이스)
+    // 4, kebab-case(케밥케이스)
+
+     const functional_buttons = document.querySelectorAll("button");
+     const box = document.querySelector("#box");
+     const result_box = document.querySelector("#result");
+
+     // 문서 하단에 offet으로 구한 width height 
+     functional_buttons[0].addEventListener("click",()=>{
+      let text = '';
+      text += `offset속성<br>`;
+      text += `offsetWidth = width + padding + border + scrollbar = ${box.offsetWidth}px <br>`;
+      
+      text += `offset속성<br>`;
+      text += `offsetWidth = width + padding + border + scrollbar = ${box.offsetHeight}px <br>`;
+
+      text += `client속성<br>`;
+      text += `clientWidth = width + padding  = ${box.clientWidth}px <br>`;
+
+      text += `client속성<br>`;
+      text += `clientHeight = width + padding= ${box.clientHeight}px <br>`;
+
+      console.log(text)
+      result_box.innerHTML = text;
+    
+     });
+
+     functional_buttons[1].addEventListener("click",(e)=>{
+      box.setAttribute("style","transform: scale(0.5); transition: 0.5s ease-in-out;")
+      // box.classList.toggle("active")
+     })
+    // client 속성
+    // clientHeight = contetn + padding 
+
+    </script>
+</body>
+
+</html>
