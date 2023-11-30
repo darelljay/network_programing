@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        .pageList {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 120px;
+            height: 30px;
+            background-color: #363636;
+            color: #fff;
+            position: fixed;
+            top: 10px;
+            border-radius: 20px;
+            opacity: 0.9;
+            border: 1px solid;
+        }
+
+        li {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+
+        div {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+
+        .box:nth-of-type(1) {
+            font-size: 2rem;
+            background-color: royalblue;
+        }
+
+        .box:nth-of-type(2) {
+            font-size: 2rem;
+            background-color: slateblue;
+        }
+
+        .box:nth-of-type(3) {
+            font-size: 2rem;
+            background-color: sandybrown;
+        }
+
+        li {
+            transition: 0.5s ease;
+        }
+
+        li.active {
+            text-decoration: underline;
+        }
+    </style>
+    <ul class="pageList">
+        <li class="page">1</li>
+        <li class="page">2</li>
+        <li class="page">3</li>
+    </ul>
+    <div class="box" id="0">content 1</div>
+    <div class="box" id="1">content 2</div>
+    <div class="box" id="2">content 3</div>
+</body>
+<script>
+    const list = document.querySelectorAll("li");
+    const div = document.querySelectorAll("div");
+
+    let options = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 1.0,
+    };
+
+    const io = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            console.log(entry.boundingClientRect)
+           if(entry.intersectionRatio>>=1 && entry.isIntersecting){
+            list[entry.target.id].classList.add("active");
+            }else{
+            list[entry.target.id].classList.remove("active");
+            }
+        })
+    },options)
+
+
+
+
+    window.addEventListener("scroll", (e) => {
+        div.forEach(element => {
+            io.observe(element);
+        })
+    });
+
+</script>
+
+</html>
