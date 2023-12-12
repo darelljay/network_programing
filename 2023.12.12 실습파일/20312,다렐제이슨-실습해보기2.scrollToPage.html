@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>실습해보기2.scrollToPage</title>
+  <style></style>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  header {
+    width: 100vw;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0000;
+    position: fixed;
+  }
+
+  ul {
+    width: 12rem;
+    ;
+    height: 2rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: black;
+    border-radius: 20px;
+    color: #fff;
+  }
+
+  section {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.3rem;
+    font-weight: bolder;
+  }
+
+  section:nth-of-type(1) {
+    background-color: beige;
+  }
+
+  section:nth-of-type(2) {
+    background-color: darkorange;
+  }
+
+  section:nth-of-type(3) {
+    background-color: khaki;
+  }
+
+  .active {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+
+  }
+  li{
+    transition: 0.1 all ease;
+  }
+</style>
+
+<body>
+  <header>
+    <ul class="nav">
+      <li class="active" data-section="section1">1번</li>
+      <li data-section="section2">2번</li>
+      <li data-section="section3">3번</li>
+    </ul>
+  </header>
+
+  <section class="content" data-section="section1">section 1</section>
+  <section class="content" data-section="section2">section 2</section>
+  <section class="content" data-section="section3">section 3</section>
+
+  <script>
+    const pages = document.querySelectorAll("section");
+    const navigation = document.querySelectorAll(".nav > li");
+
+    navigation.forEach((element, index) => {
+      element.addEventListener('click', (e) => {
+        window.scrollTo({ left: 0, top: pages[index].offsetTop, behavior: "smooth" });
+
+        navigation.forEach(el => {
+          el.classList.remove("active");
+        })
+        e.target.classList.add("active");
+
+      });
+    });
+
+
+    window.addEventListener('scroll', (e) => {
+      const currentScroll = window.pageYOffset;
+      let currentSection = null;
+
+      pages.forEach(element => {
+        const sectionTop = element.offsetTop;
+
+        if (currentScroll >= sectionTop) {
+          currentSection = element.getAttribute('data-section');
+        }
+      })
+
+      navigation.forEach(element => {
+        const sectionData = element.getAttribute("data-section");
+
+        if (sectionData === currentSection) {
+          element.classList.add('active');
+        } else {
+          element.classList.remove('active');
+        }
+      })
+    });
+
+
+
+  </script>
+</body>
+
+</html>
